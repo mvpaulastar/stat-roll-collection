@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <SpinningDice statBlock={statBlock} />
       <div className="container">
-        {statBlock.map(statDiv)}
+        <div className="statblock">{statBlock.map(statDiv)}</div>
         <button onClick={handleClick}>ROLL</button>
       </div>
       <SpinningDice statBlock={statBlock} />
