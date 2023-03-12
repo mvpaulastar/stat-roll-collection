@@ -1,0 +1,91 @@
+.dice-animation{
+  animation: spin 1s linear;
+}
+
+.spinning-dice{
+    display: flex;
+    justify-content:space-between;
+    margin: 1%;
+}
+.dice{
+    background-color: salmon;
+    height: 100px;
+    width: 100px;
+    border-radius: 10%;
+  }
+  
+  .dot{
+    background-color: white;
+    height: 10px;
+    width: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  .face1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .face2{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .face2 .dot:nth-of-type(2){
+    align-self: flex-end;
+  }
+  
+  .face3{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  
+  .face3 .dot:nth-of-type(1){
+    align-self: flex-start;
+  }
+  
+  .face3 .dot:nth-of-type(3){
+    align-self: flex-end;
+  }
+  
+  .face4{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .face4 .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .face5{
+    display: flex;    
+  }
+  
+  .face5 .column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .face5 .column:nth-of-type(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .face6{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @keyframes spin{
+    0%{transform:rotateZ(0deg)}
+    100%{transform:rotateZ(360deg)}
+  }

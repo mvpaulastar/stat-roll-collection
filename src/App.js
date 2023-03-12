@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import SpinningDice from "./components/SpinningDice.js";
 
 function App() {
+  const [statBlock, setStatBlock] = useState([]);
+
+  const handleClick = () => {
+    let newStatBlock = [];
+    for (let i = 0; i < 6; i++) {
+      newStatBlock.push(rollStat());
+    }
+
+    setStatBlock(newStatBlock);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SpinningDice statBlock={statBlock} />
+      <div className="container">
+        {statBlock.map(statDiv)}
+        <button onClick={handleClick}>Roll!</button>
+      </div>
+      <SpinningDice statBlock={statBlock} />
+    </div>
+  );
+}
+
+/*Roll 4d6 drop the lowest*/
+function rollStat() {
+  let stat = [];
+
+  for (let i = 0; i < 4; i++) {
+    stat.push(Math.floor(Math.random() * 6) + 1);
+  }
+
+  return stat
+    .sort()
+    .slice(1)
+    .reduce((a, b) => a + b);
+}
+
+function statDiv(stat) {
+  return (
+    <div className="statDiv">
+      <h1>{stat}</h1>
     </div>
   );
 }
