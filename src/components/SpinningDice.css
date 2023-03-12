@@ -12,7 +12,12 @@
     height: 100px;
     width: 100px;
     border-radius: 10%;
+    transition: background-color 1s;
   }
+
+.dice:hover{
+  background-color: red;
+}
   
   .dot{
     background-color: white;
