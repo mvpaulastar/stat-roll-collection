@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./App.css";
+import RollHistory from "./components/RollHistory.js";
 import SpinningDice from "./components/SpinningDice.js";
 
 function App() {
   const [statBlock, setStatBlock] = useState([]);
+  const [isPending, setIsPending] = useState(false);
 
   const handleClick = () => {
     let newStatBlock = [];
@@ -12,7 +14,24 @@ function App() {
     }
 
     setStatBlock(newStatBlock);
+
+    const stats = {
+      newStatBlock,
+    };
+
+    setIsPending(true);
+
+    fetch("http://localhost:5000/statBlocks", {
+      //Post to db.json
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(stats),
+    }).then(() => {
+      console.log(stats);
+      setIsPending(false);
+    });
   };
+
   return (
     <div className="App">
       <SpinningDice statBlock={statBlock} />
@@ -20,6 +39,7 @@ function App() {
         <div className="statblock">{statBlock.map(statDiv)}</div>
         <button onClick={handleClick}>ROLL</button>
       </div>
+      {!isPending && <RollHistory />}
       <SpinningDice statBlock={statBlock} />
     </div>
   );
