@@ -38,8 +38,11 @@ function App() {
       <div className="container">
         <div className="statblock">{statBlock.map(statDiv)}</div>
         <button onClick={handleClick}>ROLL</button>
+        <div className>
+          <h4>History</h4>
+          {!isPending && <RollHistory />}
+        </div>
       </div>
-      {!isPending && <RollHistory />}
       <SpinningDice statBlock={statBlock} />
     </div>
   );

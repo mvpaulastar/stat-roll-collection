@@ -1,3 +1,4 @@
+import "./RollHistory.css";
 import useFetch from "./useFetch";
 
 const RollHistory = () => {
@@ -28,7 +29,7 @@ function formattedStatBlock(statBlock) {
   return (
     <div>
       {statBlock.map((stat) => (
-        <span>{stat}, </span>
+        <span>{stat}</span>
       ))}
     </div>
   );
